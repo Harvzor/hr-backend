@@ -19,6 +19,7 @@ namespace HrBackend.Repositories
         Task<bool> SetupTestData();
         Task<IEnumerable<Event>> GetAllEvents();
         Task<Event> GetEvent(long id);
+        Task<bool> UpdateEvent(Event e);
     }
 
     public class EventsRepository : IEventsRepository
@@ -76,6 +77,15 @@ namespace HrBackend.Repositories
                     EndDate = DateTime.Now
                 };
             */
+        }
+
+        public async Task<bool> UpdateEvent(Event e)
+        {
+            await _context.Events.AddAsync(e);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

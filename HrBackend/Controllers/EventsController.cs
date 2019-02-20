@@ -22,8 +22,11 @@ namespace HrBackend.Controllers
         }
 
         /// <summary>
-        /// Temporary.
+        /// /api/events/setup
         /// </summary>
+        /// <remarks>
+        /// Temporary. Remove before going live.
+        /// </remarks>
         /// <returns></returns>
         [HttpGet("setup")]
         public Task<bool> Setup()
@@ -32,7 +35,7 @@ namespace HrBackend.Controllers
         }
 
         /// <summary>
-        /// /api/events/
+        /// GET /api/events/
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -42,7 +45,7 @@ namespace HrBackend.Controllers
         }
 
         /// <summary>
-        /// /api/events/id
+        /// GET /api/events/id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -50,6 +53,16 @@ namespace HrBackend.Controllers
         public Task<Event> Get(long id)
         {
             return _eventsRepository.GetEvent(id);
+        }
+
+        /// <summary>
+        /// POST /api/events/
+        /// </summary>
+        /// <param name="e"></param>
+        public void Post([FromBody]Event e)
+        {
+            //_noteRepository.AddNote(note);
+            _eventsRepository.UpdateEvent(e);
         }
     }
 }
