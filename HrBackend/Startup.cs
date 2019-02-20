@@ -31,7 +31,7 @@ namespace HrBackend
             });
 
             services.AddDbContext<EventsContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
             );
 
             /*
