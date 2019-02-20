@@ -1,3 +1,4 @@
+using HrBackend.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,15 @@ namespace HrBackend
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            /*
+             * Transient: Created each time.
+             * Scoped: Created only once per request.
+             * Singleton: Created the first time they are requested. Each subsequent request uses the instance that was created the first time.
+             */
+
+            // This should probably be transient so the EventsRepository is created each time.
+            services.AddTransient<IEventsRepository, EventsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
