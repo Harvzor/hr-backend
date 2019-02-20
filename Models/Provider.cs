@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HrBackend.Models
 {
     public class Provider
     {
-        public string Name;
-        public IEnumerable<Event> Events;
+        [Key]
+        public long Id { get; set; }
+        public string Name { get; set; }
+        //public IEnumerable<long> EventIds { get; set; }
     }
 }

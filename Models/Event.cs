@@ -1,12 +1,15 @@
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace HrBackend.Models
 {
     public class Event
     {
-        public string Name;
-        public DateTime StartDate;
-        public DateTime EndDate;
+        [Key]
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

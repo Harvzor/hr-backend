@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using HrBackend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HrBackend.Repositories
 {
@@ -13,6 +14,13 @@ namespace HrBackend.Repositories
 
     public class EventsRepository : IEventsRepository
     {
+        private readonly EventsContext _context = null;
+
+        public EventsRepository(DbContextOptions<EventsContext> options)
+        {
+            _context = new EventsContext(options);
+        }
+
         public IEnumerable<Event> GetAllEvents()
         {
             return new List<Event>() {
